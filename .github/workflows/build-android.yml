@@ -79,3 +79,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh release create "v${{ inputs.version_name }}" Twistack.apk --title "Twistack ${{ inputs.version_name }}" --notes "Twistack ${{ inputs.version_name }}"
+
+      # Test builds go to a "pre-release" so the phone can download them without signing in.
+      # They are never marked "latest", so the game's download link keeps pointing at the real app.
+      - name: Publish test build
+        if: ${{ inputs.target == 'preview' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="preview-${{ inputs.version_name }}-${{ github.run_number }}"
+          gh release create "$TAG" Twistack.apk --prerelease --latest=false --title "Test build $TAG (opens the preview site)" --notes "Test build. Opens dev.twistackgame.pages.dev"
