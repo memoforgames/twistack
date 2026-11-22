@@ -1,0 +1,13 @@
+{
+  "name": "twistack-android",
+  "private": true,
+  "version": "1.0.1",
+  "description": "Twistack Android app (Capacitor shell that opens the game)",
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/app": "^7.0.0",
+    "@capacitor/browser": "^7.0.0",
+    "@capacitor/cli": "^7.0.0",
+    "@capacitor/core": "^7.0.0"
+  }
+}
